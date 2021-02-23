@@ -1,20 +1,23 @@
-= link_to image_tag("forkme.png", :style => "position: absolute; top: 0; right: 0; border: 0; z-index: 1;", :alt => "Fork me on Github" ), "https://github.com/pglombardo/PasswordPusher"
+<style>
+@import url('https://fonts.googleapis.com/css?family=Arvo|Open+Sans');
+</style>
+<font face="Open Sans">
 = form_for @password do |f|
   %p
     %div.title
-      %span.title Password Pusher
+      %span.title  <font color="white">Safetynet</font> <font color="orange">IT</font>
       %br
-      %span.tagline Go Ahead.  Email Another Password.
+      %span.tagline Password Creation Portal
   %p.payload
     = f.text_field(:payload, { :class => "password", :value => PAYLOAD_INITIAL_TEXT, :onfocus => "prepareTextField(this)", :onblur => "revertTextField(this)", :autocomplete => "off" })
   %p
     Expire secret link and delete the stored password after:
     %p.slider_box
-      = range_field_tag("password_expire_after_days", EXPIRE_AFTER_DAYS_DEFAULT, {:name => "password[expire_after_days]", :class => "slider", :min => EXPIRE_AFTER_DAYS_MIN, :max => EXPIRE_AFTER_DAYS_MAX, :step => "1", :onchange => "showDaysValue(this.value)", :oninput => "showDaysValue(this.value)"})
+      = range_field_tag("password_expire_after_days", EXPIRE_AFTER_DAYS_DEFAULT, {:name => "password[expire_after_days]", :class => "slider", :min => EXPIRE_AFTER_DAYS_MIN, :max => EXPIRE_AFTER_DAYS_MAX, :step => "1", :onchange => "showDaysValue(this.value)"})
       %span#daysrange
         == #{EXPIRE_AFTER_DAYS_DEFAULT} Days
     %p.slider_box
-      = range_field_tag("password_expire_after_views", EXPIRE_AFTER_VIEWS_DEFAULT, {:name => "password[expire_after_views]", :class => "slider", :min => EXPIRE_AFTER_VIEWS_MIN, :max => EXPIRE_AFTER_VIEWS_MAX, :step => "1", :onchange => "showViewsValue(this.value)", :oninput => "showViewsValue(this.value)"})
+      = range_field_tag("password_expire_after_views", EXPIRE_AFTER_VIEWS_DEFAULT, {:name => "password[expire_after_views]", :class => "slider", :min => EXPIRE_AFTER_VIEWS_MIN, :max => EXPIRE_AFTER_VIEWS_MAX, :step => "1", :onchange => "showViewsValue(this.value)"})
       %span#viewsrange
         == #{EXPIRE_AFTER_VIEWS_DEFAULT} Views
     %br
@@ -26,16 +29,17 @@
         Allow viewers to optionally delete password before expiration
 
   %p
+    = f.submit(:value => "Push it!")
+
+
+%p.notes
+  %p
     %span
       #cookie-save.cookie-save
         %a{ :onclick => "saveExpirations()", :href => "#" } Save
         these settings as
         %i default
         in a browser cookie.
-  %p= f.submit(:value => "Push it!", :class => "pushit", 'data-disable-with' => "Pushing...")
-
-
-%p.notes
   %span.tip
     * Tip: Only enter the password into the box.  Other identifying information can compromise security.
   %p
@@ -46,8 +50,9 @@
     Once expired, encrypted passwords are unequivocally deleted from the database.
 
 %p.notes
-  = link_to "About", page_path('about')
-  \|
-  = link_to "FAQ", page_path('faq')
-  \|
-  = link_to "News & Updates", 'https://twitter.com/pwpush'
+  <b>Contact <font color="orange">support@safetynet-it.com</font> for further support.</b>
+
+%p.notes
+  
+  %br/
+  </font>
